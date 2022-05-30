@@ -1,0 +1,21 @@
+{
+  "name": "taskmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-app.js",
+  "scripts": {
+    "start": "nodemon 1-app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "4.17",
+    "mongoose": "^6.3.3"
+  }
+}
