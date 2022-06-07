@@ -25,6 +25,17 @@ const authentication = require('./middleware/authentication')
 const { errorHandlerMiddleware } = require('./middleware/error-handler')
 const notFound = require('./middleware/not-found')
 
+//connect to DB
+const Jobs = require('./models/Jobs')
+
+//var mongoose = require('mongoose')
+// mongoose.connect('mongodb://mongodb:27017/JobsAPI', {useNewUrlParser:true})
+// var db = mongoose.connection
+// db.on('error', console.error.bind(console, 'CONNECTION ERROR'))
+// db.once('open', async function(){
+//     console.log('Connected')
+// })
+
 //middleware
 app.set('trust proxy',1)
 app.use(rateLimiter({
@@ -39,8 +50,9 @@ app.use(xss())
 
 
 //routes
-app.get('/',(req,res)=>{
-    res.send('<h1>Jobs api</h1><a href="/api-docs">Documentation</a>')
+app.get('/',async (req,res)=>{
+    res.send(await Jobs.find({}))
+    //res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>')
 })
 
 //Swagger
